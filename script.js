@@ -93,7 +93,7 @@ let calculator_buttons = [
     }, {
         name : "Comma",
         symbol : ",",
-        formula : ",",
+        formula : ".",
         type : "number"
     }, {
         name : "Calculate", 
@@ -199,25 +199,28 @@ function updateOutputResult(result) {
 }
 
 // Format
-const max_output_number_length = 10;
-const output_precision = 5;
+const max_output_number_length = 10; // sætter array længden til 10
+const output_precision = 5; 
 function formatResult( result ){
-    if( digitCounter(result) > max_output_number_length){
+    if( digitCounter(result) > max_output_number_length){ // Tjekker om der er flere tal end længden på max_output_number_length
         if( isFloat(result) ){
             const result_int = parseInt(result);
             const result_int_length = digitCounter(result_int);
 
             if( result_int_length > max_output_number_length ){
                 return result.toPrecision(output_precision);
-            }else{
+            }
+            else{
                 const num_digits_after_point = max_output_number_length - result_int_length;
                 return result.toFixed(num_digits_after_point);
             }
-        }else{
+        }
+        else{
             //Hvis nummeret er en integreger 
             return result.toPrecision(output_precision);
         }
-    }else{
+    }
+    else{
         return result;
     }
 }
@@ -227,7 +230,7 @@ function formatResult( result ){
 function digitCounter(number) {
     return number.toString().length;
 }
-//
+// Tjekker om tallet er decimal
 function isFloat(number) {
     return number % 1 != 0;
 }
