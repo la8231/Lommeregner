@@ -101,7 +101,22 @@ let calculator_buttons = [
         symbol : "=",
         formula : "=",
         type : "calculate"
-    },
+    }, {
+        name : "Square root",
+        symbol : "√",
+        formula : "Math.sqrt()",
+        type : "Extra" // kommer ikke til at virke 
+    }, {
+        name : "Cos",
+        symbol : "Cos",
+        formula : "Math.cos()",
+        type : "Extra"
+    }, {
+        name : "Sinus",
+        symbol : "Sinus",
+        formula : "Math.sin()",
+        type : "Extra"
+    }
 ];
 
 //udregning af data
@@ -116,7 +131,7 @@ function createButton() {
     const btns_per_row = 4;
     let added_btns = 0;
 
-    calculator_buttons.forEach( (button, index) => { //Finder alt indholdet in arrayet
+    calculator_buttons.forEach( (button) => { //Finder alt indholdet in arrayet
         if ( added_btns % btns_per_row == 0) { //returnere remainder
             input_element.innerHTML += '<div class="row"></div>' // flytter de næste knapper ned.
         }   
@@ -148,6 +163,9 @@ function calculator(button) {
         data.result.push(button.formula);
 
     }
+    /*else if ( button.type =="Extra" ) {
+        
+    } */
     else if ( button.type == "number" ) { // Spørger om det er et nummer
         data.operation.push(button.symbol); //Hvis det er skubber den symbolet og formlen ind
         data.result.push(button.formula);
